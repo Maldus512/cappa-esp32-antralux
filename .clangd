@@ -1,0 +1,5 @@
+CompileFlags:
+  Remove: [-fno-tree-switch-conversion, -fstrict-volatile-bitfields, -mlongcalls]
+
+Diagnostics:
+  Suppress: [pp_file_not_found]

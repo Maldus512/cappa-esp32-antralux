@@ -126,7 +126,7 @@ static pman_msg_t process_page_event(pman_handle_t handle, void *state, pman_eve
                                     }
 
                                     if (password_ok) {
-                                        msg.stack_msg.tag                 = PMAN_STACK_MSG_TAG_CHANGE_PAGE;
+                                        msg.stack_msg.tag                 = PMAN_STACK_MSG_TAG_PUSH_PAGE;
                                         msg.stack_msg.as.destination.page = &page_calibration;
                                     }
                                     break;

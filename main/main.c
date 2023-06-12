@@ -9,6 +9,7 @@
 #include "peripherals/heartbit.h"
 #include "peripherals/rele.h"
 #include "peripherals/phase_cut.h"
+#include "peripherals/storage.h"
 
 
 static const char *TAG = "Main";
@@ -18,6 +19,7 @@ void app_main(void) {
     mut_model_t     model;
     model_updater_t updater = model_updater_init(&model);
 
+    storage_init();
     heartbeat_init(2000UL);
     phase_cut_init();
     keyboard_init();

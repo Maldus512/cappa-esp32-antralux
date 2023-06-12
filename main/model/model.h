@@ -43,8 +43,20 @@
 
 typedef enum {
     MOTOR_STATE_OFF = 0,
+    MOTOR_STATE_STARTING,
+    MOTOR_STATE_STOPPING,
+    MOTOR_STATE_CLEANING_START,
+    MOTOR_STATE_CLEANING_STOP,
     MOTOR_STATE_ON,
 } motor_state_t;
+
+
+typedef enum {
+    CLEANING_CONFIG_FULL = 0,
+    CLEANING_CONFIG_START,
+    CLEANING_CONFIG_STOP,
+    CLEANING_CONFIG_NONE,
+} cleaning_config_t;
 
 
 struct model {
@@ -52,9 +64,8 @@ struct model {
     size_t        motor_speed;
     uint8_t       light_state;
     uint8_t       percentages[MOTOR_MAX_SPEED];
-
-    uint16_t cleaning_period_start;
-    uint16_t cleaning_period_stop;
+    uint8_t       initial_speed_correction;
+    uint8_t       cleaning_config;
 };
 
 typedef const struct model model_t;
@@ -62,11 +73,13 @@ typedef struct model       mut_model_t;
 
 void    model_init(mut_model_t *model);
 uint8_t model_get_current_speed_percentage(model_t *pmodel);
+uint8_t model_get_cleaning_period_start(model_t *pmodel);
+uint8_t model_get_cleaning_period_stop(model_t *pmodel);
 
 GETTERNSETTER(motor_state, motor_state);
 GETTERNSETTER(motor_speed, motor_speed);
 GETTERNSETTER(light_state, light_state);
-GETTERNSETTER(cleaning_period_start, cleaning_period_start);
-GETTERNSETTER(cleaning_period_stop, cleaning_period_stop);
+GETTERNSETTER(initial_speed_correction, initial_speed_correction);
+GETTERNSETTER(cleaning_config, cleaning_config);
 
 #endif

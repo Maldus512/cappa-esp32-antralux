@@ -19,3 +19,6 @@
 [submodule "components/c-watcher"]
 	path = components/c-watcher
 	url = https://github.com/Maldus512/c-watcher.git
+[submodule "components/c-stopwatch"]
+	path = components/c-stopwatch
+	url = https://github.com/Maldus512/c-stopwatch.git

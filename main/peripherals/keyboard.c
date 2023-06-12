@@ -24,6 +24,8 @@ static keypad_key_t keyboard[KEYBOARD_BUTTON_NUM + 1] = {
     {.bitvalue = 0x01, .code = KEYBOARD_BUTTON_PLUS},
     {.bitvalue = 0x04, .code = KEYBOARD_BUTTON_MOTOR},
     {.bitvalue = 0x08, .code = KEYBOARD_BUTTON_LIGHT},
+    {.bitvalue = 0x0B, .code = KEYBOARD_BUTTON_PLUS_MINUS_LIGHT},
+    {.bitvalue = 0x07, .code = KEYBOARD_BUTTON_PLUS_MINUS_MOTOR},
     KEYPAD_NULL_KEY,
 };
 
@@ -79,7 +81,7 @@ static void keypad_timer(TimerHandle_t timer) {
 
     uint8_t bitmap = gpio_get_level(HAP_P1) | (gpio_get_level(HAP_P2) << 1) | (gpio_get_level(HAP_P3) << 2) |
                      (gpio_get_level(HAP_P4) << 3);
-    bitmap = (~bitmap) & 0xF;
+    bitmap               = (~bitmap) & 0xF;
     keypad_event_t event = keypad_routine(keyboard, 40, 1500, 100, get_millis(), bitmap);
     if (event.tag != KEYPAD_EVENT_TAG_NOTHING) {
         xQueueSend(queue, &event, 0);

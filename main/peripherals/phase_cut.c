@@ -144,7 +144,7 @@ void phase_cut_set_percentage(unsigned int perc) {
         period = sine_percentage_linearization[perc - 1];
         phase_cut_timer_enable(1);
     }
-    ESP_LOGI(TAG, "%i %6lu (%i)", perc, period, full);
+    ESP_LOGI(TAG, "%i %6i (%i)", perc, period, full);
 }
 
 

@@ -17,6 +17,7 @@ typedef enum {
 } state_machine_event_t;
 
 
+STATE_MACHINE_DECLARE(motor, state_machine_event_t);
 STATE_MACHINE_DEFINE(motor, state_machine_event_t);
 
 
